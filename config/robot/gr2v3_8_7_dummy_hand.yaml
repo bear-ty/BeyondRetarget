@@ -1,0 +1,49 @@
+name: gr2v3_8_7_dummy_hand
+xml_path: assets/robot/gr2v3_8_7_dummy_hand/gr2v3_8_7_dummy_hand.urdf
+dof: 29
+root_body: base_link
+model_to_xml_dof: null
+model_dof_order:
+- waist_yaw_joint
+- head_yaw_joint
+- head_pitch_joint
+- left_shoulder_pitch_joint
+- left_shoulder_roll_joint
+- left_shoulder_yaw_joint
+- left_elbow_pitch_joint
+- left_wrist_yaw_joint
+- left_wrist_pitch_joint
+- left_wrist_roll_joint
+- right_shoulder_pitch_joint
+- right_shoulder_roll_joint
+- right_shoulder_yaw_joint
+- right_elbow_pitch_joint
+- right_wrist_yaw_joint
+- right_wrist_pitch_joint
+- right_wrist_roll_joint
+- left_hip_pitch_joint
+- left_hip_roll_joint
+- left_hip_yaw_joint
+- left_knee_pitch_joint
+- left_ankle_pitch_joint
+- left_ankle_roll_joint
+- right_hip_pitch_joint
+- right_hip_roll_joint
+- right_hip_yaw_joint
+- right_knee_pitch_joint
+- right_ankle_pitch_joint
+- right_ankle_roll_joint
+neutral_dof: null
+foot_markers:
+- name: left_foot
+  robot_link: left_foot_roll_link
+  local_offset:
+  - 0.2
+  - 0.0
+  - -0.033
+- name: right_foot
+  robot_link: right_foot_roll_link
+  local_offset:
+  - 0.2
+  - 0.0
+  - -0.033

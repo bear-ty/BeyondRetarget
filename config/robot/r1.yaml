@@ -1,0 +1,71 @@
+name: r1
+xml_path: assets/robot/unitree_r1/r1_mocap.xml
+dof: 26
+root_body: pelvis_link
+model_to_xml_dof: null
+model_dof_order:
+- left_hip_pitch_joint
+- left_hip_roll_joint
+- left_hip_yaw_joint
+- left_knee_joint
+- left_ankle_pitch_joint
+- left_ankle_roll_joint
+- right_hip_pitch_joint
+- right_hip_roll_joint
+- right_hip_yaw_joint
+- right_knee_joint
+- right_ankle_pitch_joint
+- right_ankle_roll_joint
+- waist_roll_joint
+- waist_yaw_joint
+- left_shoulder_pitch_joint
+- left_shoulder_roll_joint
+- left_shoulder_yaw_joint
+- left_elbow_joint
+- left_wrist_roll_joint
+- right_shoulder_pitch_joint
+- right_shoulder_roll_joint
+- right_shoulder_yaw_joint
+- right_elbow_joint
+- right_wrist_roll_joint
+- head_pitch_joint
+- head_yaw_joint
+foot_grounding_meshes:
+  left_foot:
+    robot_link: left_ankle_roll_link
+    mesh_path: assets/robot/unitree_r1/meshes/left_ankle_roll_link.STL
+  right_foot:
+    robot_link: right_ankle_roll_link
+    mesh_path: assets/robot/unitree_r1/meshes/right_ankle_roll_link.STL
+neutral_dof:
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+foot_markers:
+- name: left_foot
+  robot_link: left_toe_link
+- name: right_foot
+  robot_link: right_toe_link

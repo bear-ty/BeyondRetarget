@@ -1,0 +1,14 @@
+name: BeyondRetarget
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pytorch=2.3.0
+  - torchvision=0.18.0
+  - pytorch-cuda=12.1
+  - ffmpeg
+  - pip
+  - pip:
+      - -r requirements.txt

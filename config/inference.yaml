@@ -1,0 +1,47 @@
+# Shared model and window settings for offline and streaming inference.
+window_length: 50
+fps: 30
+enable_cross_window: true
+visual_feature:
+  type: hmr2_1024
+  filename: vit_features.pt
+  input_dim: 1024
+  model_dim: 1024
+frontend:
+  visual_adapter:
+    enabled: true
+    dropout: 0.1
+    residual: true
+    zero_init_last: false
+  temporal_attention:
+    enabled: true
+    depth: 2
+    heads: 8
+    ff_mult: 4
+    dropout: 0.1
+    use_rope: true
+    rope_base: 10000.0
+g1_head:
+  type: split_residual
+  hidden_dim: 1024
+  dropout: 0.1
+  num_layers: 2
+  use_learnable_mean: true
+  root_pos_scale: 1.0
+  root_rot_scale: 1.0
+  dof_scale: 1.0
+  output_gain: 0.01
+robot_temporal_filter:
+  root:
+    enabled: false
+  dof:
+    enabled: false
+cross_window_config:
+  window_length: 50
+  overlap_frames: 10
+  context_span: 8
+  context_mode: window
+  attention:
+    bidirectional: true
+    num_heads: 8
+    dropout: 0.1

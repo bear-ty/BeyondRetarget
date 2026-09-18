@@ -1,0 +1,108 @@
+name: h1_with_hand_without_hand
+xml_path: assets/robot/h1_with_hand/h1_with_hand.urdf
+dof: 21
+root_body: pelvis
+model_to_xml_dof:
+- 0
+- 1
+- 2
+- 3
+- 4
+- 5
+- 6
+- 7
+- 8
+- 9
+- 10
+- 11
+- 12
+- 13
+- 14
+- 15
+- 28
+- 29
+- 30
+- 31
+- 32
+model_dof_order:
+- left_hip_yaw_joint
+- left_hip_roll_joint
+- left_hip_pitch_joint
+- left_knee_joint
+- left_ankle_joint
+- right_hip_yaw_joint
+- right_hip_roll_joint
+- right_hip_pitch_joint
+- right_knee_joint
+- right_ankle_joint
+- torso_joint
+- left_shoulder_pitch_joint
+- left_shoulder_roll_joint
+- left_shoulder_yaw_joint
+- left_elbow_joint
+- left_hand_joint
+- right_shoulder_pitch_joint
+- right_shoulder_roll_joint
+- right_shoulder_yaw_joint
+- right_elbow_joint
+- right_hand_joint
+neutral_dof:
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+xml_dof: 45
+foot_markers:
+- name: left_foot
+  robot_link: left_ankle_link
+  local_offset:
+  - 0.19
+  - 0.0
+  - -0.05
+- name: right_foot
+  robot_link: right_ankle_link
+  local_offset:
+  - 0.19
+  - 0.0
+  - -0.05

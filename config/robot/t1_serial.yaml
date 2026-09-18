@@ -1,0 +1,50 @@
+name: t1_serial
+xml_path: assets/robot/t1_serial/T1_serial.urdf
+dof: 23
+root_body: Trunk
+model_to_xml_dof: null
+model_dof_order:
+- AAHead_yaw
+- Head_pitch
+- Left_Shoulder_Pitch
+- Left_Shoulder_Roll
+- Left_Elbow_Pitch
+- Left_Elbow_Yaw
+- Right_Shoulder_Pitch
+- Right_Shoulder_Roll
+- Right_Elbow_Pitch
+- Right_Elbow_Yaw
+- Waist
+- Left_Hip_Pitch
+- Left_Hip_Roll
+- Left_Hip_Yaw
+- Left_Knee_Pitch
+- Left_Ankle_Pitch
+- Left_Ankle_Roll
+- Right_Hip_Pitch
+- Right_Hip_Roll
+- Right_Hip_Yaw
+- Right_Knee_Pitch
+- Right_Ankle_Pitch
+- Right_Ankle_Roll
+foot_grounding_meshes:
+  left_foot:
+    robot_link: left_foot_link
+    mesh_path: assets/robot/t1_serial/meshes/left_foot_link.STL
+  right_foot:
+    robot_link: right_foot_link
+    mesh_path: assets/robot/t1_serial/meshes/right_foot_link.STL
+neutral_dof: null
+foot_markers:
+- name: left_foot
+  robot_link: left_foot_link
+  local_offset:
+  - 0.1215
+  - 0.0
+  - -0.015
+- name: right_foot
+  robot_link: right_foot_link
+  local_offset:
+  - 0.1215
+  - 0.0
+  - -0.015

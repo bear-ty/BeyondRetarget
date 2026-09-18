@@ -1,6 +1,20 @@
 # BeyondRetarget
 
+[Project Page](https://bear-ty.github.io/Beyondretarget_page/)
+
+This demo showcases BeyondRetarget on eight robots, comparisons with other
+methods, and real-time teleoperation with BeyondRetarget.
+
+<p align="center">
+  <img src="project_teaser.gif" alt="BeyondRetarget demos on eight robots, comparisons with other methods, and real-time teleoperation" width="800" />
+</p>
+
 BeyondRetarget directly estimates humanoid-robot root motion and joint DoFs from monocular RGB video.
+
+
+**Conventional two-stage retargeting VS End-to-end BeyondRetarget.**
+
+![Conventional two-stage retargeting VS End-to-end BeyondRetarget](pipeline-comparison.png)
 
 For monocular visual teleoperation, set up SONIC separately and connect it to the GR00T ZMQ interface provided by this project.
 

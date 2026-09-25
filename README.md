@@ -1,6 +1,42 @@
-# BeyondRetarget
+<h1 align="center">BeyondRetarget: Learning Executable Humanoid Motions Directly from Monocular Video</h1>
 
-[Project Page](https://bear-ty.github.io/Beyondretarget_page/)
+<div align="center">
+  <a href="https://bear-ty.github.io/bear_ty/" target="_blank">Tianyu Xiong</a><sup>1,*</sup>&emsp;
+  <a href="https://yeelou.github.io/" target="_blank">Yi Lu</a><sup>1,*</sup>&emsp;
+  Jinrui Wang<sup>1</sup>&emsp;
+  Ziqi Liang<sup>1</sup>&emsp;
+  <br>
+  Dandan Lei<sup>3</sup>&emsp;
+  Xiaoyang Zhou<sup>4</sup>&emsp;
+  Xiao-xiao Long<sup>2</sup>&emsp;
+  <a href="https://shenqiu.njucite.cn/" target="_blank">Qiu Shen</a><sup>1,&dagger;</sup>&emsp;
+  <a href="https://cite.nju.edu.cn/People/Faculty/20190621/i5054.html" target="_blank">Xun Cao</a><sup>1</sup>
+</div>
+<div align="center">
+  <sup>1</sup>School of Electronic Science and Engineering, Nanjing University, Nanjing, China
+  <br>
+  <sup>2</sup>School of Intelligence Science and Technology, Nanjing University, Suzhou, China
+  <br>
+  <sup>3</sup>Jiangsu Mobile Information System Integration Co., Ltd., Nanjing, China
+  <br>
+  <sup>4</sup>China Mobile Zijin (Jiangsu) Innovation Research Institute Co., Ltd., Nanjing, China
+</div>
+<div align="center">
+  <sup>*</sup>Equal Contribution&emsp;
+  <sup>&dagger;</sup>Corresponding Author
+</div>
+<div align="center">
+  <a href="https://bear-ty.github.io/Beyondretarget_page/"><img src="https://img.shields.io/badge/Project-Page-green" alt="Project Page"></a>
+  <a href="https://huggingface.co/spaces/bear-ty/BeyondRetarget"><img src="https://img.shields.io/badge/Hugging%20Face-Demo-yellow" alt="Hugging Face Demo"></a>
+  <a href="https://arxiv.org/abs/2609.29850"><img src="https://img.shields.io/badge/Paper-arXiv-red" alt="Paper on arXiv"></a>
+</div>
+
+
+
+BeyondRetarget maps a monocular RGB video directly to executable root motion and joint trajectories for multiple humanoid robots—without requiring reconstructed human motion as an inference-time intermediate.
+
+
+![Conventional two-stage retargeting VS End-to-end BeyondRetarget](pipeline-comparison.png)
 
 This demo showcases BeyondRetarget on eight robots, comparisons with other
 methods, and real-time teleoperation with BeyondRetarget.
@@ -9,11 +45,6 @@ methods, and real-time teleoperation with BeyondRetarget.
   <img src="project_teaser.gif" alt="BeyondRetarget demos on eight robots, comparisons with other methods, and real-time teleoperation" width="800" />
 </p>
 
-BeyondRetarget encodes the video into a shared motion space and directly decodes robot-specific trajectories for the requested humanoids.
-
-
-
-![Conventional two-stage retargeting VS End-to-end BeyondRetarget](pipeline-comparison.png)
 
 The currently released code and the method showcased on the project website
 both use the **BeyondRetarget base version**, which accommodates the real-time
@@ -201,3 +232,19 @@ relicensed by this repository. See
 We thank the authors and maintainers of the third-party projects and assets that make this work possible.
 
 If you would like BeyondRetarget to support additional robot models, please contact [tianyuxiong@smail.nju.edu.cn](mailto:tianyuxiong@smail.nju.edu.cn), and attach the mesh assets and URDF files of the target robot. Within the scope permitted by law, we will train a decoder for your required robot model and add it to our list of supported robots.
+
+## Citation
+
+If you find this code useful, please consider citing:
+
+```bibtex
+@misc{xiong2026beyondretarget,
+  title={BeyondRetarget: Learning Executable Humanoid Motions Directly from Monocular Video},
+  author={Tianyu Xiong and Yi Lu and Jinrui Wang and Ziqi Liang and Dandan Lei and Xiaoyang Zhou and Xiao-xiao Long and Qiu Shen and Xun Cao},
+  year={2026},
+  eprint={2609.29850},
+  archivePrefix={arXiv},
+  primaryClass={cs.RO},
+  url={https://arxiv.org/abs/2609.29850},
+}
+```

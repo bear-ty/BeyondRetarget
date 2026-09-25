@@ -9,19 +9,18 @@ methods, and real-time teleoperation with BeyondRetarget.
   <img src="project_teaser.gif" alt="BeyondRetarget demos on eight robots, comparisons with other methods, and real-time teleoperation" width="800" />
 </p>
 
-BeyondRetarget directly estimates humanoid-robot root motion and joint DoFs from monocular RGB video.
+BeyondRetarget encodes the video into a shared motion space and directly decodes robot-specific trajectories for the requested humanoids.
 
 
-**Conventional two-stage retargeting VS End-to-end BeyondRetarget.**
 
 ![Conventional two-stage retargeting VS End-to-end BeyondRetarget](pipeline-comparison.png)
-
-For monocular visual teleoperation, set up SONIC separately and connect it to the GR00T ZMQ interface provided by this project.
 
 The currently released code and the method showcased on the project website
 both use the **BeyondRetarget base version**, which accommodates the real-time
 requirements of teleoperation, but does not yet support floating-camera
 scenarios or human motion involving large-scale global trajectories. We plan to open-source a performance edition in future releases, which delivers improved generalization, supports floating cameras, and enables large-range global trajectory estimation. It achieves higher stability and motion capture accuracy across diverse visual environments including indoor and outdoor scenes.
+
+For monocular visual teleoperation, set up SONIC separately and connect it to the GR00T ZMQ interface provided by this project.
 
 ## Installation
 
@@ -69,7 +68,15 @@ complete verification, and accept the data-use terms. Use the front-view
 [MotionPRO repository](https://github.com/wjrzm/MotionPRO) provides further
 dataset information.
 
-## Video Inference
+## Inference
+
+Use the single-video command for the complete pipeline, or prepare features
+separately for batch videos, image sequences, and inference from existing features.
+
+The eight supported robots are Unitree G1, Unitree R1, Fourier GR1-T1,
+Fourier GR2-V3, Unitree H1, Booster T1, Tienkung, and Atlas.
+
+### Video Inference
 
 Run from the project root:
 
@@ -84,15 +91,10 @@ The command extracts person boxes and HMR2 features, predicts motion and foot
 contacts, and post-processes the motion. Outputs are saved under
 `outputs/video_demo/inputs/` and `outputs/video_demo/predictions/`.
 
-The default model settings are in `config/inference.yaml`. Use `--checkpoint`,
-`--yolo_ckpt`, or `--hmr2_ckpt` to override weight paths. `--gpus` selects motion
-inference devices; the offline visual extractor uses the first visible CUDA
-device. To run the entire command on physical GPU 2, for example, prefix it
-with `CUDA_VISIBLE_DEVICES=2` and leave `--gpus` at its default `0`.
-The `--fps` option sets the exported motion frame rate (default: 30); set it to
-the source frame rate. It does not resample the video.
 
-## Batch and Image Inputs
+### Step-by-Step Inference
+
+**1. Prepare inputs**
 
 For a collection of videos, extract features once and then run offline
 inference. Each video gets its own directory under the output root, preserving
@@ -105,7 +107,7 @@ python scripts/preprocess_videos.py \
   --output_root outputs/prepared
 ```
 
-For MotionPRO, omit `--video_glob` to select only `1.mp4` per sequence.
+For MotionPRO dataset, omit `--video_glob` to select only `1.mp4` per sequence.
 Without `--output_root`, features are saved beside each video; this requires
 one selected video per sequence directory.
 
@@ -134,7 +136,7 @@ The validator checks feature shapes and finite values, optional boxes, and
 frame counts against source video or images when available. Only
 `vit_features.pt` is required by the motion predictor.
 
-## Offline Inference
+**2. Run inference and post-processing**
 
 Run all eight supported robots on prepared sequences:
 
@@ -145,21 +147,31 @@ python scripts/run_multirobot_pipeline.py \
   --output_root outputs/inference
 ```
 
-Use `--robots` to select a comma-separated subset:
-`g1,r1,gr1t1,gr2v3_8_7_dummy_hand,h1_with_hand,t1_serial,atlas_v4,tienkung`.
+Use `--robots` to select a comma-separated subset using these command-line IDs:
+
+| Robot | Command-line ID |
+| --- | --- |
+| Unitree G1 | `g1` |
+| Unitree R1 | `r1` |
+| Fourier GR1-T1 | `gr1t1` |
+| Fourier GR2-V3 | `gr2v3_8_7_dummy_hand` |
+| Unitree H1 | `h1_with_hand` |
+| Booster T1 | `t1_serial` |
+| Tienkung | `tienkung` |
+| Atlas | `atlas_v4` |
 
 - `--phase all` (default): predict motion and contacts, then post-process.
 - `--phase infer`: save raw motion and predicted contacts.
 - `--phase postprocess`: post-process existing raw predictions and contacts.
 
-Use `--skip_existing` to reuse compatible outputs. Results are saved in
+Results are saved in
 `raw/`, `contact/`, and `postprocess/` under the output root. Each robot's
 `*_raw_pred.npz` contains root translation, root rotation, joint DoFs, and FPS;
 files under `postprocess/` contain the final corrected motion. Export metadata
 records the robot description and joint ordering.
 See [postprocess/README.md](postprocess/README.md) for the post-processing API.
 
-## Streaming and Visualization
+### Streaming inference and Visualization
 
 We support fixed-lag video inference, live camera input, MuJoCo visualization,
 and GR00T action publishing through ZMQ. See

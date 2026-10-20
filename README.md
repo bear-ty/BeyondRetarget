@@ -33,25 +33,54 @@
 
 
 
-BeyondRetarget maps a monocular RGB video directly to executable root motion and joint trajectories for multiple humanoid robots—without requiring reconstructed human motion as an inference-time intermediate.
+🤖 BeyondRetarget maps a monocular RGB video directly to executable root motion and joint trajectories for multiple humanoid robots—without requiring reconstructed human motion as an inference-time intermediate.
 
 
-![Conventional two-stage retargeting VS End-to-end BeyondRetarget](pipeline-comparison.png)
+![Conventional two-stage retargeting VS End-to-end BeyondRetarget](assets/demos/pipeline-comparison.png)
 
-This demo showcases BeyondRetarget on eight robots, comparisons with other
+🎬 This demo showcases BeyondRetarget on eight robots, comparisons with other
 methods, and real-time teleoperation with BeyondRetarget.
 
 <p align="center">
-  <img src="project_teaser.gif" alt="BeyondRetarget demos on eight robots, comparisons with other methods, and real-time teleoperation" width="800" />
+  <img src="assets/demos/project_teaser.gif" alt="BeyondRetarget demos on eight robots, comparisons with other methods, and real-time teleoperation" width="800" />
 </p>
 
 
 The currently released code and the method showcased on the project website
-both use the **BeyondRetarget base version**, which accommodates the real-time
-requirements of teleoperation, but does not yet support floating-camera
-scenarios or human motion involving large-scale global trajectories. We plan to open-source a performance edition in future releases, which delivers improved generalization, supports floating cameras, and enables large-range global trajectory estimation. It achieves higher stability and motion capture accuracy across diverse visual environments including indoor and outdoor scenes.
+both use the **BeyondRetarget base version**. It is primarily designed for
+**real-time teleoperation**, with a moderately simplified model architecture,
+and does not yet support **high-precision global trajectory estimation**,
+moving cameras, or human motion involving large-scale global trajectories.
 
 For monocular visual teleoperation, set up SONIC separately and connect it to the GR00T ZMQ interface provided by this project.
+
+We will open-source **BeyondRetarget Plus** in the future, with broader motion
+coverage and support for moving cameras and large-scale global human motion.
+See the roadmap and development preview below.
+
+
+## 📋 Todo List
+
+- [x] Release the **base version**, pretrained weights, and inference tools for eight humanoid robots.
+- [x] Support offline video inference and real-time streaming for teleoperation.
+- [ ] **Open-source BeyondRetarget Plus**, supporting motions across nearly all scenarios, including **skating, gymnastics, walking, and running**.
+
+
+### 👀 BeyondRetarget Plus: Development Preview
+
+The full demo below shows BeyondRetarget Plus on diverse motions and camera
+movement:
+
+<p align="center">
+  <img src="assets/demos/beyondretarget_plus_preview.gif" alt="BeyondRetarget Plus development preview: skating, tennis, walking, and gymnastics" width="640" />
+</p>
+
+The demo showcases **highly dynamic motions and large-scale movement**, and with
+**stable foot contact without sliding in the tennis scene**.
+
+**This demo is a development preview.** BeyondRetarget Plus is still under
+development, and the future open-source release will further address floating feet and other artifacts.
+**Stay tuned! 🚀**
 
 ## Installation
 
@@ -217,7 +246,7 @@ lib/           Models, visual preprocessing, kinematics, and export utilities
 postprocess/   Contact prediction, motion filtering, and foot IK
 scripts/       Setup, batch preprocessing, input validation, and offline inference
 stream_infer/  Video/camera streaming, MuJoCo viewer, and GR00T ZMQ publisher
-assets/        Downloaded weights and robot resources
+assets/        Demo media, downloaded weights, and robot resources
 ```
 
 ## License
